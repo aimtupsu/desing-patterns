@@ -7,20 +7,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-        log.info("<++++FABRIC METHOD++++>");
+        log.info("Фабричный метод");
+        log.info("Создание акустической гитары.");
 
-        final AcousticGuitarWorkshop acousticGuitarWorkshop = new AcousticGuitarWorkshop();
+        final GuitarWorkshop acousticGuitarWorkshop = new AcousticGuitarWorkshop();
 
         final Guitar acousticGuitar = acousticGuitarWorkshop.createGuitar();
 
         acousticGuitar.play();
 
-        final BassGuitarWorkshop bassGuitarWorkshop = new BassGuitarWorkshop();
+        log.info("Создание басс гитары.");
+
+        final GuitarWorkshop bassGuitarWorkshop = new BassGuitarWorkshop();
 
         final Guitar bassGuitar = bassGuitarWorkshop.createGuitar();
 
         bassGuitar.play();
 
-        log.info("<+++++FABRIC METHOD+++++>");
+        log.info("Фабричный метод");
     }
 }
