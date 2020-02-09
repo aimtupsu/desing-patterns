@@ -3,7 +3,7 @@
 Фабричный метод (Factory method) - порождающий паттерн проектирования, предоставлюящий своим подклассам (дочерним классам) интерфейс для создания экземпляров некоторого класса.  
 
 ## Общая иерархия
-![Factory Method UML diagramm from Wikipedia](https://upload.wikimedia.org/wikipedia/ru/f/f0/FactoryMethodPattern.png)
+![Factory Method UML diagramm from Wikipedia](https://vzkuxw.db.files.1drv.com/y4m0YQ-QGh6kAJ7jpW5OpJbUYNrgXuvOJ-EC-jutOKl7xRAjnxH9c68-AiJuzLzGOYLzwZDTirnLsX_uN_06ijE2Nh0kBTcjUhhOZAxeQC8Fyz-aYWt8aNvaDFAB7bLo4JJIML0GLsBZ3DWXggc96lQ6dEennr8tbfRb_UrgxNZqBhVSgzWfmBvswf5xa0xYMv8Ms2gvgu9iOkE99GIjp94Cw?width=1202&height=502&cropmode=none)
 #### Продукт (Product)
 Общий интерфейс создаваемых объектов - Гитара
 ```java
@@ -32,7 +32,6 @@ interface GuitarWorkshop {
 Реализует интерфейс создаталя - мастерская по изготовлению акустических гитар
 ```java
 class AcousticGuitarWorkshop implements GuitarWorkshop {
-    @SuppressWarnings("UnnecessaryLocalVariable") 
     createGuitar() {
         final AcousticGuitar acousticGuitar = new AcousticGuitar();
         //...
@@ -44,7 +43,6 @@ class AcousticGuitarWorkshop implements GuitarWorkshop {
 Реализует интерфейс создаталя - мастерская по изготовлению басс-гитар
 ```java
 class BassGuitarWorkshop implements GuitarWorkshop {
-    @SuppressWarnings("UnnecessaryLocalVariable") 
     createGuitar() {
         final BassGuitar bassGuitar = new BassGuitar();
         //...
