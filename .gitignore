@@ -1,6 +1,5 @@
 /.idea/
 *.iml
-*.iml
 /lib
 /log
 target/
