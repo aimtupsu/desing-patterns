@@ -7,7 +7,7 @@ Configuration:
       name: Console
       target: SYSTEM_OUT
       PatternLayout:
-        Pattern: "%msg%n"
+        Pattern: "[%t] %c{1} - %msg%n"
 
   Loggers:
     Root:
