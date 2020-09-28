@@ -7,7 +7,7 @@ import com.aimtupsu.workshop.impl.BassGuitarWorkshop;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-public class Main {
+public class FactoryMethodName {
 
     private static final String SPLIT_LINE = ":::::::::::::::::::::::::::::::::::::::::::";
 
