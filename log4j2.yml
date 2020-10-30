@@ -7,7 +7,7 @@ Configuration:
       name: Console
       target: SYSTEM_OUT
       PatternLayout:
-        Pattern: "%d %6.6p [%-25.25t] %-20c{1} %msg%n"
+        Pattern: "%d %6.6p [%-25.25t] %-25c{1} %msg%n"
 
   Loggers:
     Root:

@@ -3,7 +3,6 @@ package com.aimtupsu.workshop.impl;
 import com.aimtupsu.guitar.Guitar;
 import com.aimtupsu.guitar.impl.ClassicGuitar;
 import com.aimtupsu.workshop.GuitarWorkshop;
-import javax.annotation.Nonnull;
 import lombok.extern.log4j.Log4j2;
 
 /**
@@ -24,7 +23,6 @@ public class ClassicGuitarWorkshop implements GuitarWorkshop {
     }
 
     @Override
-    @Nonnull
     public Guitar createGuitar() {
         log.info("Создание новой классической гитары.");
         return new ClassicGuitar(STRING_COUNT);

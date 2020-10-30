@@ -1,7 +1,6 @@
 package com.aimtupsu.workshop;
 
 import com.aimtupsu.guitar.Guitar;
-import javax.annotation.Nonnull;
 
 /**
  * Интерфейс мастерской, в которой создают гитары.
@@ -15,6 +14,5 @@ public interface GuitarWorkshop {
      *
      * @return  объект гитары.
      */
-    @Nonnull
     Guitar createGuitar();
 }
