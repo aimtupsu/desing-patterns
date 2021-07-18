@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum OperationType {
+
     PAY(1),
     REFUND(-1);
 

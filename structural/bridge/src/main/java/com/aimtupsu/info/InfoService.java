@@ -5,7 +5,11 @@ import java.util.List;
 
 public interface InfoService {
 
+    /**
+     * Получает информацию о всех банках.
+     *
+     * @return информация о всех банках.
+     */
     List<Info> getBankInfos();
-    Info getShopInfo();
 
 }

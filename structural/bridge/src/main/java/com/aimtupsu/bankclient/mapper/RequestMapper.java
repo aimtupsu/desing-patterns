@@ -5,7 +5,7 @@ import com.aimtupsu.bankclient.model.OperationType;
 import com.aimtupsu.bankclient.model.PositionInfo;
 import com.aimtupsu.bankclient.model.Request;
 import com.aimtupsu.model.Position;
-import com.aimtupsu.model.Sale;
+import com.aimtupsu.model.Receipt;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.experimental.UtilityClass;
@@ -13,22 +13,22 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class RequestMapper {
 
-    public Request convertToPay(final Sale sale) {
-        return commonConvertingSale(sale)
+    public Request convertToPay(final Receipt receipt) {
+        return commonConvertingSale(receipt)
                 .operationType(OperationType.PAY)
                 .build();
     }
 
-    public Request convertToRefund(final Sale sale) {
-        return commonConvertingSale(sale)
+    public Request convertToRefund(final Receipt receipt) {
+        return commonConvertingSale(receipt)
                 .operationType(OperationType.REFUND)
                 .build();
     }
 
-    private CustomerInfo convertCustomerInfo(final Sale sale) {
+    private CustomerInfo convertCustomerInfo(final Receipt receipt) {
         return CustomerInfo.builder()
-                .name(sale.getCustomerName())
-                .email(sale.getCustomerEmail())
+                .name(receipt.getCustomerName())
+                .email(receipt.getCustomerEmail())
                 .build();
     }
 
@@ -58,11 +58,11 @@ public class RequestMapper {
         return positionInfoList;
     }
 
-    private Request.RequestBuilder commonConvertingSale(final Sale sale) {
+    private Request.RequestBuilder commonConvertingSale(final Receipt receipt) {
         return Request.builder()
-                .id(sale.getNumber())
-                .customerInfo(convertCustomerInfo(sale))
-                .positionInfoList(convertPositionInfoList(sale.getPositionList()));
+                .id(receipt.getNumber())
+                .customerInfo(convertCustomerInfo(receipt))
+                .positionInfoList(convertPositionInfoList(receipt.getPositionList()));
     }
 
 }

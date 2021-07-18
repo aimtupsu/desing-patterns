@@ -1,11 +1,24 @@
 package com.aimtupsu.payment;
 
-import com.aimtupsu.model.Sale;
+import com.aimtupsu.model.Receipt;
 
+/**
+ * Сервис оплат/возвратов.
+ */
 public interface PaymentService {
 
-    void paySale(Sale sale);
+    /**
+     * Оплата чека.
+     *
+     * @param receipt чек покупки.
+     */
+    void pay(Receipt receipt);
 
-    void refundSale(Sale sale);
+    /**
+     * Возврат оплаты чека.
+     *
+     * @param receipt чек покупки.
+     */
+    void refund(Receipt receipt);
 
 }

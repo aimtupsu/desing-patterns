@@ -26,15 +26,6 @@ public class InfoServiceImpl implements InfoService {
         return bankInfos;
     }
 
-    @Override
-    public Info getShopInfo() {
-        log.info("Получаем информацию о магазине.");
-        return Info.builder()
-                .name("Интернет-Магазин игрушек.")
-                .address("Ул. Пушкина, д. Колотушкина")
-                .build();
-    }
-
     private Info mapBankInfo(final BankInfo bankInfo) {
         return Info.builder()
                 .name(bankInfo.getName())

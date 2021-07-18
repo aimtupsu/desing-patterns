@@ -1,5 +1,6 @@
 package com.aimtupsu.builder.pizzeria.pizza;
 
+import com.aimtupsu.builder.pizzeria.menu.PizzaName;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Dough;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Ingredient;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Sauce;
@@ -13,7 +14,7 @@ public interface Pizza {
     /**
      * Возвращает название пиццы.
      */
-    String getName();
+    PizzaName getName();
 
     /**
      * Возвращает подробное описание пиццы.

@@ -26,6 +26,11 @@ public class EndInstruction implements Instruction {
     }
 
     @Override
+    public void inputData(int data) {
+        log.info("[Coffee Machine] - В конце приготовления напитка ввод данных не поддерживается.");
+    }
+
+    @Override
     public Instruction next() throws HandleException {
         log.info("[Coffee Machine] - Выполняется приготовление напитка. Пожалуйста, подождите.");
         try {

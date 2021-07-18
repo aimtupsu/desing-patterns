@@ -1,5 +1,6 @@
 package com.aimtupsu.builder.pizzeria.pizza;
 
+import com.aimtupsu.builder.pizzeria.menu.PizzaName;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Dough;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Ingredient;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Sauce;
@@ -22,7 +23,7 @@ public interface PizzaBuilder {
      * @param name будущее название пиццы.
      * @return самого себя.
      */
-    PizzaBuilder name(String name);
+    PizzaBuilder name(PizzaName name);
 
     /**
      * Проставляет вид теста для создаваемой пиццы.

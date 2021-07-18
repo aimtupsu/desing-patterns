@@ -1,12 +1,12 @@
 package com.aimtupsu.builder.pizzeria;
 
-import com.aimtupsu.builder.pizzeria.menu.PizzaMenu;
+import com.aimtupsu.builder.pizzeria.menu.PizzaName;
 import com.aimtupsu.builder.pizzeria.pizza.Pizza;
 import com.aimtupsu.builder.pizzeria.pizza.PizzaBuilder;
 import com.aimtupsu.builder.pizzeria.pizza.impl.PizzaBuilderImpl;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -33,16 +33,14 @@ public class Pizzeria {
     /**
      * Возвращает меню пиццерии.
      */
-    public List<String> getMenu() {
-        return Arrays.stream(PizzaMenu.values())
-                .map(PizzaMenu::getName)
-                .collect(Collectors.toList());
+    public List<PizzaName> getMenu() {
+        return new LinkedList<>(Arrays.asList(PizzaName.values()));
     }
 
     /**
      * Готовит выбранную из меню пиццу.
      */
-    public Pizza makePizza(final PizzaMenu pizza) {
+    public Pizza makePizza(final PizzaName pizza) {
         return pizzaMaker.makePizza(pizza);
     }
 

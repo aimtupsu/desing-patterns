@@ -10,6 +10,7 @@ public class Response {
 
     @RequiredArgsConstructor
     public enum ResponseStatus {
+
         SUCCESSFUL(0),
         ERROR(4);
 

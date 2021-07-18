@@ -1,5 +1,6 @@
 package com.aimtupsu.builder.pizzeria.pizza.impl;
 
+import com.aimtupsu.builder.pizzeria.menu.PizzaName;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Dough;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Ingredient;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Sauce;
@@ -18,7 +19,7 @@ public class PizzaBuilderImpl implements PizzaBuilder {
     /**
      * Значения по умолчанию.
      */
-    private String name;
+    private PizzaName name;
     private Dough dough;
     private List<Sauce> sauces;
     private List<Ingredient> ingredients;
@@ -28,7 +29,7 @@ public class PizzaBuilderImpl implements PizzaBuilder {
     }
 
     private void init() {
-        this.name = "Фирменная";
+        this.name = PizzaName.BRANDED;
         this.dough = Dough.TRADITIONAL;
         this.sauces = new ArrayList<>();
         this.ingredients = new ArrayList<>();
@@ -41,7 +42,7 @@ public class PizzaBuilderImpl implements PizzaBuilder {
     }
 
     @Override
-    public PizzaBuilder name(String name) {
+    public PizzaBuilder name(PizzaName name) {
         this.name = name;
         return this;
     }
