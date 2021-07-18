@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Меню пиццерии.
+ * Название пиццы.
  *
  * @author Vladimir.Shchepin
  */
 @RequiredArgsConstructor
-public enum PizzaMenu {
+public enum PizzaName {
 
     MARGHERITA("Маргарита"),
     PEPPERONI("Пепперони"),

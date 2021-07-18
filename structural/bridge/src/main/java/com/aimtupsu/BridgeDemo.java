@@ -4,7 +4,7 @@ import com.aimtupsu.factory.BeanFactory;
 import com.aimtupsu.info.InfoService;
 import com.aimtupsu.model.Info;
 import com.aimtupsu.model.Position;
-import com.aimtupsu.model.Sale;
+import com.aimtupsu.model.Receipt;
 import com.aimtupsu.payment.PaymentService;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -28,10 +28,6 @@ public class BridgeDemo {
             log.info("Имя банка: {}. Адрес: {}", bankInfo.getName(), bankInfo.getAddress());
         }
 
-        log.info("Получаем информацию о магазине.");
-        final Info shopInfo = infoService.getShopInfo();
-        log.info("Имя магазина: {}. Адрес: {}", shopInfo.getName(), shopInfo.getAddress());
-
         log.info("Создаём сервис оплаты через КурскДорРезервПромБанк.");
         final PaymentService paymentServiceByKurskDorReservPromBank
                 = factory.getPaymentServiceByKurskDorReservPromBank();
@@ -48,20 +44,20 @@ public class BridgeDemo {
     private static void paymentScenario(final PaymentService paymentService) {
 
         log.info("Оплачиваем покупку.");
-        final Sale saleToPay = getSaleToPay();
-        paymentService.paySale(saleToPay);
+        final Receipt receiptToPay = getReceiptToPay();
+        paymentService.pay(receiptToPay);
 
         log.info("Возвращаем денежные средства за одну из позиций покупки.");
-        final Sale saleToRefund = getSaleToRefund();
-        paymentService.refundSale(saleToRefund);
+        final Receipt receiptToRefund = getReceiptToRefund();
+        paymentService.refund(receiptToRefund);
     }
 
-    private static Sale getSaleToPay() {
+    private static Receipt getReceiptToPay() {
         final List<Position> positionList = new ArrayList<>();
         positionList.add(new Position(1, 1245667, "Паровозик Чух-Чух", BigDecimal.valueOf(12350)));
         positionList.add(new Position(2, 1245, "Кубик-рубика", BigDecimal.valueOf(125950)));
         positionList.add(new Position(3, 98766665, "Мишка Тедди", BigDecimal.valueOf(99999)));
-        return Sale.builder()
+        return Receipt.builder()
                 .number(1)
                 .customerName("Михаил Задурнов")
                 .customerEmail("mickhael.zadoornov@eboy.ru")
@@ -69,10 +65,10 @@ public class BridgeDemo {
                 .build();
     }
 
-    private static Sale getSaleToRefund() {
+    private static Receipt getReceiptToRefund() {
         final List<Position> positionList = new ArrayList<>();
         positionList.add(new Position(2, 1245, "Кубик-рубика", BigDecimal.valueOf(125950)));
-        return Sale.builder()
+        return Receipt.builder()
                 .number(2)
                 .customerName("Михаил Задурнов")
                 .customerEmail("mickhael.zadoornov@eboy.ru")

@@ -2,11 +2,12 @@ package com.aimtupsu.builder;
 
 import com.aimtupsu.builder.client.Client;
 import com.aimtupsu.builder.pizzeria.Pizzeria;
-import com.aimtupsu.builder.pizzeria.menu.PizzaMenu;
+import com.aimtupsu.builder.pizzeria.menu.PizzaName;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import lombok.extern.log4j.Log4j2;
 
 /**
@@ -15,25 +16,27 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class BuilderDemo {
 
-    private static Random r = new Random();
-    private static List<String> clientNames = new LinkedList<>(Arrays.asList("Рон", "Гарри", "Гермиона", "Невилл"));
+    private static final Random RANDOM = new Random();
+    private static final List<String> CLIENT_NAMES
+            = new LinkedList<>(Arrays.asList("Рон", "Гарри", "Гермиона", "Невилл"));
 
     public static void main(String[] args) {
         log.info("Builder");
 
         final Pizzeria pizzeria = new Pizzeria("Потапыч");
 
-        final List<String> menu = pizzeria.getMenu();
+        final List<PizzaName> menu = pizzeria.getMenu();
+        final String menuStr = menu.stream().map(PizzaName::getName).collect(Collectors.joining(", "));
         log.info("Пиццерия: {}", pizzeria.getName());
-        log.info("Меню пиццерии: {}", String.join(", ", menu));
+        log.info("Меню пиццерии: {}", menuStr);
 
-        Arrays.stream(PizzaMenu.values())
-                .map(m -> new Client(generateClientName(), m))
-                .forEach(c -> c.buyPizza(pizzeria));
+        CLIENT_NAMES.stream()
+                .map(Client::new)
+                .forEach(client -> client.buyPizza(pizzeria, getRandomPizzaName(menu)));
     }
 
-    private static String generateClientName() {
-        return clientNames.remove(r.nextInt(clientNames.size()));
+    private static PizzaName getRandomPizzaName(final List<PizzaName> menu) {
+        return menu.remove(RANDOM.nextInt(menu.size()));
     }
 
 }

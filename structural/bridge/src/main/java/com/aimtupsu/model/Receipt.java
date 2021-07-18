@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Sale {
+public class Receipt {
 
     private final int number;
     private final String customerName;

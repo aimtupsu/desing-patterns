@@ -1,10 +1,8 @@
 package com.aimtupsu.payment;
 
 import com.aimtupsu.bankclient.BankClient;
-import com.aimtupsu.bankclient.mapper.RequestMapper;
-import com.aimtupsu.bankclient.model.Request;
 import com.aimtupsu.bankclient.model.Response;
-import com.aimtupsu.model.Sale;
+import com.aimtupsu.model.Receipt;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
@@ -15,10 +13,9 @@ public class PaymentServiceImpl implements PaymentService {
     private final BankClient bankClient;
 
     @Override
-    public void paySale(Sale sale) {
+    public void pay(final Receipt receipt) {
         log.info("Выполняем оплату покупки.");
-        final Request request = RequestMapper.convertToPay(sale);
-        final Response response = bankClient.sendRequest(request);
+        final Response response = bankClient.pay(receipt);
         if (response.getStatus() == Response.ResponseStatus.SUCCESSFUL) {
             log.info("Оплата выполнена успешно.");
         } else {
@@ -27,10 +24,9 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public void refundSale(Sale sale) {
+    public void refund(final Receipt receipt) {
         log.info("Выполняем возврат денежных средств покупки.");
-        final Request request = RequestMapper.convertToRefund(sale);
-        final Response response = bankClient.sendRequest(request);
+        final Response response = bankClient.refund(receipt);
         if (response.getStatus() == Response.ResponseStatus.SUCCESSFUL) {
             log.info("Возврат денежных средств выполнен успешно.");
         } else {

@@ -1,6 +1,6 @@
 package com.aimtupsu.builder.pizzeria;
 
-import com.aimtupsu.builder.pizzeria.menu.PizzaMenu;
+import com.aimtupsu.builder.pizzeria.menu.PizzaName;
 import com.aimtupsu.builder.pizzeria.pizza.Pizza;
 import com.aimtupsu.builder.pizzeria.pizza.PizzaBuilder;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Dough;
@@ -9,7 +9,7 @@ import com.aimtupsu.builder.pizzeria.pizza.parts.Sauce;
 import lombok.Data;
 
 /**
- * Волшебная печь по производству пицц.
+ * Волшебная печь по производству пиццы.
  *
  * @author Vladimir.Shchepin
  */
@@ -21,7 +21,7 @@ public class PizzaMaker {
     /**
      * Создаёт выбранную из меню пиццу.
      */
-    public Pizza makePizza(final PizzaMenu pizza) {
+    public Pizza makePizza(final PizzaName pizza) {
         switch (pizza) {
             case MARGHERITA:
                 return makeMargherita();
@@ -39,7 +39,7 @@ public class PizzaMaker {
      */
     private Pizza makeMargherita() {
         return pizzaBuilder
-                .name(PizzaMenu.MARGHERITA.getName())
+                .name(PizzaName.MARGHERITA)
                 .dough(Dough.THIN)
                 .sauce(Sauce.CATSUP)
                 .ingredient(Ingredient.TOMATO)
@@ -53,7 +53,7 @@ public class PizzaMaker {
      */
     private Pizza makePepperoni() {
         return pizzaBuilder
-                .name(PizzaMenu.PEPPERONI.getName())
+                .name(PizzaName.PEPPERONI)
                 .dough(Dough.TRADITIONAL)
                 .sauce(Sauce.CATSUP)
                 .ingredient(Ingredient.SALAMI)
@@ -68,7 +68,7 @@ public class PizzaMaker {
      */
     private Pizza makeDiabola() {
         return pizzaBuilder
-                .name(PizzaMenu.DIABOLA.getName())
+                .name(PizzaName.DIABOLA)
                 .dough(Dough.THIN)
                 .sauce(Sauce.CATSUP)
                 .ingredient(Ingredient.SALAMI)

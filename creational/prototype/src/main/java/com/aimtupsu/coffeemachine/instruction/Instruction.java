@@ -7,9 +7,7 @@ public interface Instruction {
 
     State getState();
     void showMessage();
-    default void inputData(final int data) {
-
-    }
+    void inputData(final int data);
     Instruction next() throws HandleException;
 
 }

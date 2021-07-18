@@ -1,5 +1,6 @@
 package com.aimtupsu.builder.pizzeria.pizza.impl;
 
+import com.aimtupsu.builder.pizzeria.menu.PizzaName;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Dough;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Ingredient;
 import com.aimtupsu.builder.pizzeria.pizza.parts.Sauce;
@@ -16,7 +17,7 @@ import lombok.Data;
 @Data
 class PizzaImpl implements Pizza {
 
-    private final String name;
+    private final PizzaName name;
     private final Dough dough;
     private final List<Sauce> sauces;
     private final List<Ingredient> ingredients;
@@ -34,7 +35,7 @@ class PizzaImpl implements Pizza {
         final String ingredientsDesc = ingredients.stream()
                 .map(Ingredient::getName)
                 .collect(Collectors.joining(", "));
-        return String.format(pizzaFormat, name, dough.getName(), sauceDesc, ingredientsDesc);
+        return String.format(pizzaFormat, name.getName(), dough.getName(), sauceDesc, ingredientsDesc);
     }
 
 }
